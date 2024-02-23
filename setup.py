@@ -11,3 +11,4 @@ conn = mysql.connector.connect(
     database="FinanceTracker",
     auth_plugin='mysql_native_password'
 )
+ # test
