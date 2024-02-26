@@ -28,6 +28,8 @@ cursor.execute("""
         DateOfBirth DATE,
         Gender VARCHAR(10),
         PhoneNumber VARCHAR(15),
+        IsActive BOOLEAN DEFAULT 0,
+        IsEmployee BOOLEAN DEFAULT 0,
         CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )
@@ -62,6 +64,20 @@ cursor.execute("""
         UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (ApplicantID) REFERENCES User(UserID),
         FOREIGN KEY (JobID) REFERENCES Job(JobID)
+    )
+""")
+
+# Create Like Table
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS Like (
+        LikeID INT AUTO_INCREMENT PRIMARY KEY,
+        SenderID INT,
+        ReceiverID INT,
+        IsMatch BOOLEAN DEFAULT FALSE,
+        CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        FOREIGN KEY (SenderID) REFERENCES User(UserID),
+        FOREIGN KEY (ReceiverID) REFERENCES User(UserID)
     )
 """)
 
