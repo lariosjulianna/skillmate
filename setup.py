@@ -88,7 +88,6 @@ cursor.execute("""
         JobID INT,
         ApplicantID INT,
         MatchStrength INT,
-        IsLiked BOOLEAN,
         CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (JobID) REFERENCES Job(JobID),
