@@ -173,10 +173,7 @@ cursor.execute("""
         UserID INT,
         City VARCHAR(255),
         State VARCHAR(255),
-        Country VARCHAR(255),
         ZipCode VARCHAR(20),
-        Latitude DECIMAL(10, 8),
-        Longitude DECIMAL(11, 8),
         CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (UserID) REFERENCES User(UserID)
