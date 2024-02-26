@@ -104,6 +104,7 @@ cursor.execute("""
         Content TEXT,
         IsRead BOOLEAN,
         CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (SenderID) REFERENCES User(UserID),
         FOREIGN KEY (ReceiverID) REFERENCES User(UserID)
     )
