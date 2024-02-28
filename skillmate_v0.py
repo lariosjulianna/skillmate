@@ -6,7 +6,7 @@ import mysql.connector
 #ensure credentials are correct
 host = "localhost"
 user = "root"
-password = "9009-Ocean!"
+password = "CPSC408!"
 database = "Skillmate"
 conn = mysql.connector.connect(host=host, user=user, password=password, auth_plugin='mysql_native_password', database=database)
 cursor = conn.cursor()
