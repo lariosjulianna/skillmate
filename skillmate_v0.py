@@ -14,32 +14,35 @@ cursor = conn.cursor()
 #login to website by checking db for existing matching username and password
 #returns a -1 if no matching credentials are found
 def login(email, password):
-    #query for finding matching username + password
-    query = f"""
+    # Use parameterized query to prevent SQL injection
+    query = """
         SELECT COUNT(*)
         FROM User
-        HAVING Email = {email} AND PasswordHash = {password};"""
-    cursor.execute(query)
-    if(cursor.fetchone()[0] == 0):
+        WHERE Email = %s AND PasswordHash = %s;
+    """
+    cursor.execute(query, (email, password))
+    if cursor.fetchone()[0] == 0:
         return -1
     else:
-        #if one is found pulls user_id and returns it
-        query = f"""
+        # if one is found pulls user_id and returns it
+        query = """
             SELECT FirstName
             FROM User
-            WHERE Email = {email} AND PasswordHash = {password};"""
-        cursor.execute(query)
+            WHERE Email = %s AND PasswordHash = %s;
+        """
+        cursor.execute(query, (email, password))
         return cursor.fetchone()[0]
 
 #create account function
-def create_account(email, password,firstname,lastname):
-    # query = f"""
-    #     INSERT INTO User VALUES({firstname,lastname,email,password});"""
-    # cursor.execute(query)
-    # conn.commit()
+def create_account(email, password, firstname, lastname):
+    query = f"""
+        INSERT INTO User (FirstName, LastName, Email, PasswordHash)
+        VALUES ('{firstname}', '{lastname}', '{email}', '{password}');
+    """
+    cursor.execute(query)
+    conn.commit()
     clear_frame()
     logged_in(firstname)
-
 
 # Create the main window
 parent = tk.Tk()
@@ -73,8 +76,8 @@ def signup_button_click(email, password):
     query = f"""
         SELECT COUNT(*)
         FROM User
-        HAVING Email = {email};"""
-    cursor.execute(query)
+        WHERE Email = %(email)s;"""
+    cursor.execute(query, {'email' : email})
     if(cursor.fetchone()[0] != 0):
         #ensuring no repeat emails
         signup_display_label = tk.Label(parent, text="Email already has account",font=("Arial", 24))
