@@ -69,7 +69,7 @@ cursor.execute("""
 
 # Create Like Table
 cursor.execute("""
-    CREATE TABLE IF NOT EXISTS Like (
+    CREATE TABLE IF NOT EXISTS `Like` (
         LikeID INT AUTO_INCREMENT PRIMARY KEY,
         SenderID INT,
         ReceiverID INT,
@@ -83,7 +83,7 @@ cursor.execute("""
 
 # Create Match Table
 cursor.execute("""
-    CREATE TABLE IF NOT EXISTS Match (
+    CREATE TABLE IF NOT EXISTS `Match` (
         MatchID INT AUTO_INCREMENT PRIMARY KEY,
         JobID INT,
         ApplicantID INT,
