@@ -1,0 +1,32 @@
+For this week's TTD, Dixon and I worked on the basic filtering logic.
+The goal was to be able to filter users by different attributes.
+
+Test #1: Test the program
+Status: Fail
+Reasoning: There was no code yet
+
+Test #2: Randomize the User
+Status: Fail
+Reasoning: Wasn't properly linked to database
+
+Test #3: Radnomize the User
+Status: Succes
+Reasoning: One random user in the database was chosen and displayed
+
+Test #4: Multiple Filtering Queries:
+Status: Fail
+Reasoning: Not enough sample data with overlap in the database, and
+SQL syntax error
+
+Test #5: Singular Filtering Queries
+Status: Success
+Reasoning: Any user that fit a singular filter was shown 
+
+Overall: this was considered a success. The tests that we wanted to 
+pass passed, and the bonus tests (multiple filtering queries - 
+queries with multiple filters) failed, which was expected. If we had 
+more time, we definitely could have made it work by adding more sample 
+data or just by fixing the syntax errors. 
+
+In the future, we would do this again, as a second set of eyes
+was definitely useful in order to spot errors before they were made. 
